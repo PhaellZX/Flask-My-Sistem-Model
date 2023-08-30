@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cadastro</title>
+</head>
+<body>
+    <h1>Cadastro</h1>
+    <form method="POST" action="{{ url_for('register') }}">
+        <input type="text" name="username" placeholder="Nome de usuário" required><br>
+        <input type="password" name="password" placeholder="Senha" required><br>
+        <input type="password" name="confirm_password" placeholder="Confirmar senha" required><br>
+        <button type="submit">Cadastrar</button>
+    </form>
+    <p><a href="{{ url_for('login') }}">Voltar para o Login</a></p>
+</body>
+</html>

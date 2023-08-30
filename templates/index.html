@@ -1,0 +1,37 @@
+{% include 'partials/header.html' %}
+<div class="search-container">
+    <form action="{{ url_for('search') }}" method="GET">
+        <input type="text" name="search_query" placeholder="Buscar por nome do cliente / Voltar Lista (ENTER)">
+        <button type="submit" class="btn btn-primary">Buscar</button>
+    </form>
+</div>
+    <table class="table">
+        <thead>
+            <th>Nome Cliente</th>
+            <th>Tipo de Corte</th>
+            <th>Data</th>
+            <th>Horas</th>
+            <th>Preço</th>
+            <th>Modificações</th>
+        </thead>
+        <tbody>
+            {% for e in cliente %}
+            <tr>
+                <td>{{e.nome_cliente}}</td>
+                <td>{{e.tipo}}</td>
+                <td>{{ e.data.strftime('%d/%m/%Y') }}</td>
+                <td>{{e.horas}}</td>
+                <td>{{e.preco}}</td>
+                <td>
+                    <a href="/edit/{{e.id_cliente}}">Editar | </a>
+                    <a href="/delete/{{e.id_cliente}}">Excluir | </a>
+                    <a href="/view/{{e.id_cliente}}">Gerar Comprovante</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="col-xs-12">
+    <a href="{{ url_for('add') }}">Adicionar Cliente</a>
+    </div>
+    {% include 'partials/footer.html' %}

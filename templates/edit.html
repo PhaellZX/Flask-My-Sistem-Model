@@ -1,0 +1,37 @@
+{% include 'partials/header.html' %}
+    <h1 style="text-align: center;">Editar Cliente</h1>
+    <form action="/edit/{{ cliente.id_cliente }}" method="post" class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <input type="text" name="nome_cliente" id="nome_cliente" placeholder="Nome do cliente" class="form-control" value="{{ cliente.nome_cliente }}" required>
+            </div>
+            <div class="col-md-6">
+                <input type="text" name="tipo" id="tipo" placeholder="Tipo de corte" class="form-control" value="{{ cliente.tipo }}" required>
+            </div>
+            <div class="col-md-6">
+                <input type="   text" name="data" id="data" class="form-control" value="{{ cliente.data_input_format }}" required>
+            </div>
+            <div class="col-md-6">
+                <input type="text" name="horas" id="horas" class="form-control" value="{{ cliente.horas }}" required>
+            </div>
+            <div class="col-md-6">
+                <input type="text" name="preco" id="preco" placeholder="Preço" class="form-control" value="{{ cliente.preco }}" required>
+            </div>
+        </div>
+        <br>
+        <div class="row col-xs-12">
+            <button type="submit" class="btn btn-block btn-primary">Alterar</button>
+        </div>
+    </form>
+    <div class="col-xs-12">
+    <br>
+    <p style="text-align: center;"><a href="{{ url_for('index') }}">Voltar</a></p>
+    </div>
+{% include 'partials/footer.html' %}
+<script>
+    // Obter a data atual
+    var dataAtual = new Date().toISOString().split('T')[0];
+
+    // Definir o valor mínimo da entrada de data como a data atual
+    document.getElementById('data').setAttribute('min', dataAtual);
+</script>

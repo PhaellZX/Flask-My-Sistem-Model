@@ -1,0 +1,39 @@
+{% include 'partials/header.html' %}
+    <h1 style="text-align: center;">Adicionar Cliente</h1>
+    <form action="/add" method="post" class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <input type="text" name="nome_cliente" id="nome_cliente" placeholder="nome do cliente" class="form-control" required>
+            </div>
+            <div class="col-md-6">
+                <input type="text" name="tipo" id="tipo" placeholder="tipo de corte" class="form-control" required>
+            </div>
+            <div class="col-md-6">
+                <input type="date" name="data" id="data" class="form-control" required>
+            </div>
+            <div class="col-md-6">
+                <input type="time" name="horas" id="horas" value="09:00" class="form-control" required>
+            </div>
+            <div class="col-md-6">
+                <input type="text" name="preco" id="preco" placeholder="Valor R$" class="form-control" required>
+            </div>
+        </div>
+        <input type="hidden" name="data_formatada" id="data_formatada">
+        <br>
+        <div class="row col-xs-12">
+            <button type="submit" class="btn btn-block btn-primary">Adicionar</button>
+        </div>
+    </form>
+    <div class="col-xs-12">
+        <br>
+    <p style="text-align: center;"><a href="{{ url_for('index') }}">Voltar</a></p>
+    </div>
+    {% include 'partials/footer.html' %}
+    <script>
+        // Obter a data atual
+        var dataAtual = new Date().toISOString().split('T')[0];
+    
+        // Definir o valor mínimo da entrada de data como a data atual
+        document.getElementById('data').setAttribute('min', dataAtual);
+    </script>
+   

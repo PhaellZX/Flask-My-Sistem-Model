@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+</head>
+<body>
+    <div class="wrapper fadeInDown">
+    <div id="formContent">
+    <h1>Login</h1>
+    <form method="POST" action="{{ url_for('login') }}">
+        <input type="text" name="username"   class="fadeIn third" placeholder="Nome de usuário" required><br>
+        <input type="password" name="password"  class="fadeIn third" placeholder="Senha" required><br>
+        <input type="submit" class="fadeIn fourth" value="Logar">
+    </form>
+    </main>
+     Não tem uma conta? <a href="{{ url_for('register') }}">Registrar</a></p>
+{% include 'partials/footer.html' %}
+        
+   

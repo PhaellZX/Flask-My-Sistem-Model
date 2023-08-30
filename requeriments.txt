@@ -1,0 +1,1 @@
+pip install Flask Flask-SQLAlchemy Werkzeug Flask-Login selenium Pillow pywebview

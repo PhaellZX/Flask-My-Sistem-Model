@@ -1,0 +1,16 @@
+{% include 'partials/header.html' %}
+<div class="comprovante-container">
+    <div style="text-align: center;">
+        <h2>Comprovante do Cliente</h2>
+        <div>
+            <strong>Nome:</strong> {{ cliente.nome_cliente }}<br>
+            <strong>Tipo de Corte:</strong> {{ cliente.tipo }}<br>
+            <strong>Data:</strong> {{ cliente.data.strftime('%d/%m/%Y') }}<br>
+            <strong>Horas:</strong> {{ cliente.horas }}<br>
+            <strong>Preço:</strong> {{ cliente.preco }}
+        </div>
+    </div>
+    <a href="{{ url_for('index') }}">Voltar</a>
+    <a id="convertButton" href="#">Baixar</a>
+    </div>
+    {% include 'partials/footer.html' %}
