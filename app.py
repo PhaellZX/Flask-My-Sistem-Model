@@ -7,7 +7,6 @@ from PIL import Image
 from io import BytesIO
 import time
 from datetime import datetime
-
 import webview
 
 # Settings Users
@@ -56,6 +55,7 @@ def logout():
 # Rota de Login
 @app.route('/', methods=['GET', 'POST'])
 def login():
+    
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
@@ -70,7 +70,8 @@ def login():
 
     return render_template('login.html')
 
-# Registrar Users
+from werkzeug.security import generate_password_hash
+
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
@@ -79,16 +80,23 @@ def register():
         confirm_password = request.form['confirm_password']
 
         if password == confirm_password:
-            hashed_password = generate_password_hash(password, method='sha256')
+            # Gerar o hash da senha
+            hashed_password = generate_password_hash(password, method='pbkdf2:sha256')
+            
+            # Criar o novo usuário com o nome de usuário e senha hasheada
             new_user = User(username=username, password_hash=hashed_password)
+            
+            # Adicionar o novo usuário ao banco de dados
             db.session.add(new_user)
             db.session.commit()
+            
             flash('Cadastro realizado com sucesso! Faça login.', 'success')
             return redirect(url_for('login'))
         else:
             flash('As senhas não coincidem.', 'danger')
 
     return render_template('register.html')
+
 
     def __init__(self, nome, idade):
         self.nome = nome
